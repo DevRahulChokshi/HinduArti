@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "780224826105",
+    "firebase_url": "https://hinduarti-44863.firebaseio.com",
+    "project_id": "hinduarti-44863",
+    "storage_bucket": "hinduarti-44863.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780224826105:android:647179fca473663b",
+        "android_client_info": {
+          "package_name": "com.ebusiness_canvas.hindu_arti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780224826105-pgn4ruch4207o6f2srrvpvhcasvae48f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ebusiness_canvas.hindu_arti",
+            "certificate_hash": "fde8a4728bb92fbb89b6d8f80c2005ad04d299e6"
+          }
+        },
+        {
+          "client_id": "780224826105-todmim2rktfk0j3a2p8isvmfuuefr1e0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDG4B23jlLBnAUEqoDLVTFIGqtoAsBR7Ik"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780224826105-todmim2rktfk0j3a2p8isvmfuuefr1e0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
