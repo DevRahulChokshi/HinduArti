@@ -13,10 +13,12 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.ebusiness_canvas.hindu_arti.social_media.AccountActivity;
+
 import com.ebusiness_canvas.hindu_arti.R;
+import com.ebusiness_canvas.hindu_arti.social_media.AccountActivity;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -44,6 +46,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.squareup.picasso.Picasso;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -59,6 +62,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextView mStatusTextView;
     private TextView mDetailTextView;
     private ImageView mImageView;
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +73,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //        mStatusTextView = findViewById(R.id.status);
 //        mDetailTextView = findViewById(R.id.detail);
 //        mImageView=findViewById(R.id.imgDisplay);
-        loginButton = (LoginButton) findViewById(R.id.facebook_login_button);
+
+        loginButton = findViewById(R.id.facebook_login_button);
         loginButton.setReadPermissions("email");
 
         // Set the dimensions of the sign-in button.
@@ -77,7 +82,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         signInButton.setSize(SignInButton.SIZE_STANDARD);
 
 
-        setGooglePlusButtonText(signInButton,"Sign up with Google");
+        setGooglePlusButtonText(signInButton, "Sign up with Google");
 
         // Button listeners
         findViewById(R.id.sign_in_button).setOnClickListener(this);
@@ -145,7 +150,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             // if previously logged in, proceed to the account activity
             launchAccountActivity();
         }
-        Log.i(TAG,"OnCreate");
+        Log.i(TAG, "OnCreate");
     }
 
     protected void setGooglePlusButtonText(SignInButton signInButton, String buttonText) {
@@ -247,7 +252,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
         // [START_EXCLUDE silent]
-        //showProgressDialog();
+
+        showProgressDialog();
 
         // [END_EXCLUDE]
 
@@ -267,12 +273,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Snackbar.make(findViewById(R.id.main_layout), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
                             updateUI(null);
                         }
-
                         // [START_EXCLUDE]
                         //          hideProgressDialog();
                         // [END_EXCLUDE]
                     }
                 });
+    }
+
+    private void showProgressDialog() {
+
     }
     // [END auth_with_google]
 
@@ -329,15 +338,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     .error(R.drawable.common_google_signin_btn_icon_dark_normal)
                     .into(mImageView);
 
-            Log.i(LoginActivity.class.getSimpleName(),"URI:-"+personPhoto);
-            Log.i(LoginActivity.class.getSimpleName(),personName);
-            Log.i(LoginActivity.class.getSimpleName(),personGivenName);
-            Log.i(LoginActivity.class.getSimpleName(),personFamilyName);
-            Log.i(LoginActivity.class.getSimpleName(),personEmail);
-            Log.i(LoginActivity.class.getSimpleName(),personId);
+            Log.i(LoginActivity.class.getSimpleName(), "URI:-" + personPhoto);
+            Log.i(LoginActivity.class.getSimpleName(), personName);
+            Log.i(LoginActivity.class.getSimpleName(), personGivenName);
+            Log.i(LoginActivity.class.getSimpleName(), personFamilyName);
+            Log.i(LoginActivity.class.getSimpleName(), personEmail);
+            Log.i(LoginActivity.class.getSimpleName(), personId);
         }
 
-//        //hideProgressDialog();
+        hideProgressDialog();
+
 //        if (user != null) {
 //
 //            mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
@@ -351,6 +361,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //
 //            findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
 //        }
+
+    }
+
+    private void hideProgressDialog() {
 
     }
 

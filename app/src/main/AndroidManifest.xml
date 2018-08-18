@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activites.SplashActivity"
+        <activity
+            android:name=".activites.SplashActivity"
             android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,7 +52,10 @@
             android:name=".social_media.AccountActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBar" />
-        <activity android:name=".activites.LoginActivity"/>
+        <activity
+            android:name=".activites.LoginActivity"
+            android:theme="@style/FullscreenTheme" />
+        <activity android:name=".activites.HomeActivity"></activity>
     </application>
 
 </manifest>

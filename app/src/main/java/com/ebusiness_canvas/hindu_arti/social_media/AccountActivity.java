@@ -11,9 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ebusiness_canvas.hindu_arti.R;
 import com.ebusiness_canvas.hindu_arti.model.Contract;
 import com.ebusiness_canvas.hindu_arti.model.FontHelper;
-import com.ebusiness_canvas.hindu_arti.R;
 import com.ebusiness_canvas.hindu_arti.activites.LoginActivity;
 import com.facebook.AccessToken;
 import com.facebook.Profile;

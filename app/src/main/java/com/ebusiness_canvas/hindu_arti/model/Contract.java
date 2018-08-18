@@ -1,7 +1,6 @@
 package com.ebusiness_canvas.hindu_arti.model;
 
 import android.net.Uri;
-import android.util.Base64;
 
 /**
  * Created by EBC003 on 10/28/2017.

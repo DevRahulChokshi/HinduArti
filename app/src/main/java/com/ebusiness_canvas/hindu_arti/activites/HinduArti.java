@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.ebusiness_canvas.hindu_arti.R;
 
+
 public class HinduArti extends AppCompatActivity {
 
     @Override

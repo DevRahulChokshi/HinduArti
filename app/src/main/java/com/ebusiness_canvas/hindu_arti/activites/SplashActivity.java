@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import com.ebusiness_canvas.hindu_arti.R;
 
+
 public class SplashActivity extends AppCompatActivity {
 
     private ImageView mImageView;
