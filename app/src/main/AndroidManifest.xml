@@ -48,6 +48,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".social_media.AccountActivity"
             android:screenOrientation="portrait"

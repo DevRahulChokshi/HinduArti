@@ -266,7 +266,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
+                            Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
+                            startActivity(intent);
+//                            updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -323,30 +325,31 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void updateUI(FirebaseUser user) {
 
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-        if (acct != null) {
-            String personName = acct.getDisplayName();
-            String personGivenName = acct.getGivenName();
-            String personFamilyName = acct.getFamilyName();
-            String personEmail = acct.getEmail();
-            String personId = acct.getId();
-            Uri personPhoto = acct.getPhotoUrl();
 
-            Picasso.get()
-                    .load(personPhoto)
-                    .placeholder(R.drawable.common_full_open_on_phone)
-                    .error(R.drawable.common_google_signin_btn_icon_dark_normal)
-                    .into(mImageView);
-
-            Log.i(LoginActivity.class.getSimpleName(), "URI:-" + personPhoto);
-            Log.i(LoginActivity.class.getSimpleName(), personName);
-            Log.i(LoginActivity.class.getSimpleName(), personGivenName);
-            Log.i(LoginActivity.class.getSimpleName(), personFamilyName);
-            Log.i(LoginActivity.class.getSimpleName(), personEmail);
-            Log.i(LoginActivity.class.getSimpleName(), personId);
-        }
-
-        hideProgressDialog();
+//        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+//        if (acct != null) {
+//            String personName = acct.getDisplayName();
+//            String personGivenName = acct.getGivenName();
+//            String personFamilyName = acct.getFamilyName();
+//            String personEmail = acct.getEmail();
+//            String personId = acct.getId();
+//            Uri personPhoto = acct.getPhotoUrl();
+//
+//            Picasso.get()
+//                    .load(personPhoto)
+//                    .placeholder(R.drawable.common_full_open_on_phone)
+//                    .error(R.drawable.common_google_signin_btn_icon_dark_normal)
+//                    .into(mImageView);
+//
+//            Log.i(LoginActivity.class.getSimpleName(), "URI:-" + personPhoto);
+//            Log.i(LoginActivity.class.getSimpleName(), personName);
+//            Log.i(LoginActivity.class.getSimpleName(), personGivenName);
+//            Log.i(LoginActivity.class.getSimpleName(), personFamilyName);
+//            Log.i(LoginActivity.class.getSimpleName(), personEmail);
+//            Log.i(LoginActivity.class.getSimpleName(), personId);
+//        }
+//
+//        hideProgressDialog();
 
 //        if (user != null) {
 //
