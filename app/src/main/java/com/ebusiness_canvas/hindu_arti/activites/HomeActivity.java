@@ -1,8 +1,8 @@
 package com.ebusiness_canvas.hindu_arti.activites;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
@@ -28,10 +28,15 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
+        expandableListView =    findViewById(R.id.expandableListView);
+
+        setToolbar();
+
+        int [] imgResource=ListDataItem.getImgResource();
+
         expandableListDetail = ListDataItem.getData();
         expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
-        expandableListAdapter = new RecyclerItemAdapter(this, expandableListTitle, expandableListDetail);
+        expandableListAdapter = new RecyclerItemAdapter(this, expandableListTitle, expandableListDetail,imgResource);
         expandableListView.setAdapter(expandableListAdapter);
         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
@@ -65,5 +70,11 @@ public class HomeActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    private void setToolbar() {
+        ActionBar actionBar=getSupportActionBar();
+        if (actionBar!=null)
+        actionBar.setTitle(R.string.title_home);
     }
 }

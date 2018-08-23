@@ -2,11 +2,11 @@ package com.ebusiness_canvas.hindu_arti.adapter;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ebusiness_canvas.hindu_arti.R;
@@ -19,18 +19,19 @@ public class RecyclerItemAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<String> expandableListTitle;
     private HashMap<String, List<String>> expandableListDetail;
+    private int [] mImgResource;
 
     public RecyclerItemAdapter(Context context, List<String> expandableListTitle,
-                                       HashMap<String, List<String>> expandableListDetail) {
+                               HashMap<String, List<String>> expandableListDetail, int[] imgResource) {
         this.context = context;
         this.expandableListTitle = expandableListTitle;
         this.expandableListDetail = expandableListDetail;
+        this.mImgResource = imgResource;
     }
 
     @Override
     public Object getChild(int listPosition, int expandedListPosition) {
-        return this.expandableListDetail.get(this.expandableListTitle.get(listPosition))
-                .get(expandedListPosition);
+        return this.expandableListDetail.get(this.expandableListTitle.get(listPosition)).get(expandedListPosition);
     }
 
     @Override
@@ -45,7 +46,7 @@ public class RecyclerItemAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.recycler_item_list, null);
+            convertView = layoutInflater.inflate(R.layout.recycler_item_childe_list, null);
         }
         TextView expandedListTextView = (TextView) convertView
                 .findViewById(R.id.txtViewTitle);
@@ -78,11 +79,14 @@ public class RecyclerItemAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int listPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
         String listTitle = (String) getGroup(listPosition);
+        int imgResource = (int) getGroup(listPosition);
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.context.
                     getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.recycler_item_list, null);
         }
+        ImageView  imageView=convertView.findViewById(R.id.imgItem);
+        imageView.setImageResource(imgResource);
         TextView listTitleTextView = (TextView) convertView
                 .findViewById(R.id.txtViewTitle);
         listTitleTextView.setTypeface(null, Typeface.BOLD);
