@@ -1,5 +1,6 @@
 package com.ebusiness_canvas.hindu_arti.activites;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,27 +19,32 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private ExpandableListView expandableListView;
-    private ExpandableListAdapter expandableListAdapter;
-    private List<String> expandableListTitle;
-    private HashMap<String, List<String>> expandableListDetail;
+    private ExpandableListView mExpandableListView;
+    private ExpandableListAdapter mExpandableListAdapter;
+    private List<String> mExpandableListTitle;
+    private HashMap<String, List<String>> mExpandableListDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        expandableListView =    findViewById(R.id.expandableListView);
+        mExpandableListView =  findViewById(R.id.expandableListView);
 
         setToolbar();
 
-        int [] imgResource=ListDataItem.getImgResource();
+        int [] imgGroupImage=ListDataItem.getGroupImage() ;
+        int [] imgChildOne=ListDataItem.getChildImageOne() ;
+        int [] imgChildTwo=ListDataItem.getChildImageTwo() ;
+        int [] imgChildThree=ListDataItem.getChildImageThree() ;
+        int [] imgChildFour=ListDataItem.getChildImageFour() ;
+        int [] imgChildFive=ListDataItem.getChildImageFive() ;
 
-        expandableListDetail = ListDataItem.getData();
-        expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
-        expandableListAdapter = new RecyclerItemAdapter(this, expandableListTitle, expandableListDetail,imgResource);
-        expandableListView.setAdapter(expandableListAdapter);
-        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+        mExpandableListDetail = ListDataItem.getData();
+        mExpandableListTitle = new ArrayList<String>(mExpandableListDetail.keySet());
+        mExpandableListAdapter = new RecyclerItemAdapter(this, mExpandableListTitle, mExpandableListDetail,imgGroupImage,imgChildOne,imgChildTwo,imgChildThree,imgChildFour,imgChildFive);
+        mExpandableListView.setAdapter(mExpandableListAdapter);
+        mExpandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
             @Override
             public void onGroupExpand(int groupPosition) {
@@ -46,27 +52,20 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-
+        mExpandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
             @Override
-            public void onGroupCollapse(int groupPosition) {
+            public void onGroupCollapse(int groupPosition) { }
 
 
-            }
         });
 
-        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+        mExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-                Toast.makeText(
-                        getApplicationContext(),
-                        expandableListTitle.get(groupPosition)
-                                + " -> "
-                                + expandableListDetail.get(
-                                expandableListTitle.get(groupPosition)).get(
-                                childPosition), Toast.LENGTH_SHORT
-                ).show();
+                Intent intent=new Intent(getApplicationContext(),DetailActivity.class);
+                intent.putExtra("ListChildTitle",mExpandableListDetail.get(mExpandableListTitle.get(groupPosition)).get(childPosition));
+                startActivity(intent);
                 return false;
             }
         });
@@ -75,6 +74,7 @@ public class HomeActivity extends AppCompatActivity {
     private void setToolbar() {
         ActionBar actionBar=getSupportActionBar();
         if (actionBar!=null)
-        actionBar.setTitle(R.string.title_home);
+            actionBar.setTitle(R.string.title_home);
     }
 }
+

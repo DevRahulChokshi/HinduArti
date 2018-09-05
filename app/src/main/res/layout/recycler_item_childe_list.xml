@@ -19,7 +19,7 @@
                 android:id="@+id/imgItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/deep_img"
+                android:src="@drawable/img_arrti"
                 android:layout_margin="5dp"/>
             <TextView
                 android:id="@+id/txtViewTitle"

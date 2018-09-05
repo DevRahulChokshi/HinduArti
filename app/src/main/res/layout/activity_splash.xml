@@ -16,7 +16,7 @@
         android:id="@+id/deep_bg"
         android:layout_width="187.17dp"
         android:layout_height="158.05dp"
-        android:src="@drawable/deep_img"
+        android:src="@drawable/img_arrti"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

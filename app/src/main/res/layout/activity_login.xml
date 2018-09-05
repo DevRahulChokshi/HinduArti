@@ -55,7 +55,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:src="@drawable/deep_img"
+        android:src="@drawable/img_arrti"
         app:layout_constraintBottom_toTopOf="@+id/txt_deep"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

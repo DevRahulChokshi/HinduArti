@@ -19,14 +19,23 @@ public class RecyclerItemAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<String> expandableListTitle;
     private HashMap<String, List<String>> expandableListDetail;
-    private int [] mImgResource;
+    private int [] mImgGroupImage;
+    private int [] mImageChildImage;
+    private int [] mImageChildImageTwo;
+    private int [] mImageChildImageThree;
+    private int [] mImageChildImageFour;
+    private int [] mImageChildImageFive;
 
-    public RecyclerItemAdapter(Context context, List<String> expandableListTitle,
-                               HashMap<String, List<String>> expandableListDetail, int[] imgResource) {
+    public RecyclerItemAdapter(Context context, List<String> expandableListTitle, HashMap<String, List<String>> expandableListDetail, int[] imgResource, int[] imgChildImage, int[] imgChildTwo, int[] imgChildThree, int[] imgChildFour, int[] imgChildFive) {
         this.context = context;
         this.expandableListTitle = expandableListTitle;
         this.expandableListDetail = expandableListDetail;
-        this.mImgResource = imgResource;
+        this.mImgGroupImage = imgResource;
+        this.mImageChildImage = imgChildImage;
+        this.mImageChildImageTwo = imgChildTwo;
+        this.mImageChildImageThree = imgChildThree;
+        this.mImageChildImageFour = imgChildFour;
+        this.mImageChildImageFive = imgChildFive;
     }
 
     @Override
@@ -40,14 +49,56 @@ public class RecyclerItemAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getChildView(int listPosition, final int expandedListPosition,
-                             boolean isLastChild, View convertView, ViewGroup parent) {
-        final String expandedListText = (String) getChild(listPosition, expandedListPosition);
+    public View getChildView(int listPosition, final int expandedListPosition,boolean isLastChild, View convertView, ViewGroup parent) {
+        final String expandedListText = (String) getChild(listPosition,expandedListPosition);
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.recycler_item_childe_list, null);
         }
+
+        if (listPosition==0){
+            if(mImageChildImage !=null){
+                for (int i=0;i<expandableListTitle.size();i++){
+                    ImageView  imageView=convertView.findViewById(R.id.imgItem);
+                    imageView.setImageResource(mImageChildImage[expandedListPosition]);
+                }
+            }
+        }
+        else if (listPosition==1) {
+            if (mImageChildImageTwo != null) {
+                for (int i = 0; i < expandableListTitle.size(); i++) {
+                    ImageView imageView = convertView.findViewById(R.id.imgItem);
+                    imageView.setImageResource(mImageChildImageTwo[expandedListPosition]);
+                }
+            }
+        }
+        else if (listPosition==2) {
+            if (mImageChildImageThree != null) {
+                for (int i = 0; i < expandableListTitle.size(); i++) {
+                    ImageView imageView = convertView.findViewById(R.id.imgItem);
+                    imageView.setImageResource(mImageChildImageThree[expandedListPosition]);
+                }
+            }
+        }
+        else if (listPosition==3) {
+            if (mImageChildImageFour != null) {
+                for (int i = 0; i < expandableListTitle.size(); i++) {
+                    ImageView imageView = convertView.findViewById(R.id.imgItem);
+                    imageView.setImageResource(mImageChildImageFour[expandedListPosition]);
+                }
+            }
+        }
+        else if (listPosition==4) {
+            if (mImageChildImageFive != null) {
+                for (int i = 0; i < expandableListTitle.size(); i++) {
+                    ImageView imageView = convertView.findViewById(R.id.imgItem);
+                    imageView.setImageResource(mImageChildImageFive[expandedListPosition]);
+                }
+            }
+        }
+
+
         TextView expandedListTextView = (TextView) convertView
                 .findViewById(R.id.txtViewTitle);
         expandedListTextView.setText(expandedListText);
@@ -62,32 +113,35 @@ public class RecyclerItemAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getGroup(int listPosition) {
-        return this.expandableListTitle.get(listPosition);
-    }
-
-    @Override
-    public int getGroupCount() {
-        return this.expandableListTitle.size();
-    }
-
-    @Override
-    public long getGroupId(int listPosition) {
-        return listPosition;
-    }
-
-    @Override
-    public View getGroupView(int listPosition, boolean isExpanded,
-                             View convertView, ViewGroup parent) {
-        String listTitle = (String) getGroup(listPosition);
-        int imgResource = (int) getGroup(listPosition);
-        if (convertView == null) {
-            LayoutInflater layoutInflater = (LayoutInflater) this.context.
-                    getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.recycler_item_list, null);
+            return this.expandableListTitle.get(listPosition);
         }
-        ImageView  imageView=convertView.findViewById(R.id.imgItem);
-        imageView.setImageResource(imgResource);
-        TextView listTitleTextView = (TextView) convertView
+
+        @Override
+        public int getGroupCount() {
+            return this.expandableListTitle.size();
+        }
+
+        @Override
+        public long getGroupId(int listPosition) {
+            return listPosition;
+        }
+
+        @Override
+        public View getGroupView(int listPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+            String listTitle = (String) getGroup(listPosition);
+            if (convertView == null) {
+                LayoutInflater layoutInflater = (LayoutInflater) this.context.
+                        getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = layoutInflater.inflate(R.layout.recycler_item_list, null);
+            }
+
+            if(mImgGroupImage !=null){
+                for (int i=0;i<expandableListTitle.size();i++){
+                    ImageView  imageView=convertView.findViewById(R.id.imgItem);
+                    imageView.setImageResource(mImgGroupImage[listPosition]);
+                }
+            }
+            TextView listTitleTextView = (TextView) convertView
                 .findViewById(R.id.txtViewTitle);
         listTitleTextView.setTypeface(null, Typeface.BOLD);
         listTitleTextView.setText(listTitle);

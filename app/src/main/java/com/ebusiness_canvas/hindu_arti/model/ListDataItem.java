@@ -8,11 +8,88 @@ import java.util.List;
 
 public class ListDataItem {
 
-    public static int [] getImgResource(){
+    public static int [] getGroupImage(){
         return new int[]{
-            R.drawable.img_arrti,
-            R.drawable.img_nitykarma,
+                R.drawable.img_arrti,
+                R.drawable.img_shlock,
+                R.drawable.img_swami_samrth,
+                R.drawable.img_nitykarma,
+                R.drawable.img_utsav,
         };
+    }
+    public static int [] getChildImageOne(){
+        return new int[]{
+                R.drawable.img_ganesh_arti,
+                R.drawable.img_shiv,
+                R.drawable.img_dutta,
+                R.drawable.img_sri_devi_maa,
+                R.drawable.img_hanuman,
+                R.drawable.img_shree_krishna,
+                R.drawable.img_trupati_balaji,
+                R.drawable.swami_sadguru,
+                R.drawable.img_vitthal
+        } ;
+    }
+    public static int [] getChildImageTwo(){
+        return new int[]{
+                R.drawable.karpur,
+                R.drawable.mantra_pushpajanli,
+                R.drawable.ganesh_vandan,
+                R.drawable.ganesh_stroat,
+                R.drawable.bhim_rupee,
+                R.drawable.img_ram,
+                R.drawable.swarspati_vandan,
+                R.drawable.mahalaxmi,
+                R.drawable.atharvashirsha,
+                R.drawable.gaytri_mantra,
+                R.drawable.pshaydan
+        } ;
+    }
+    public static int [] getChildImageThree(){
+        return new int[]{
+                R.drawable.swami_samarth_din,
+                R.drawable.swami_tarak_mantra,
+                R.drawable.swami_mala_mantra,
+                R.drawable.img_swami_samrth,
+                R.drawable.swami_pic1,
+                R.drawable.swami_pic2,
+                R.drawable.swami_pic3,
+                R.drawable.swami_pic4,
+                R.drawable.swami_pic5
+        } ;
+    }
+    public static int [] getChildImageFour(){
+        return new int[]{
+                R.drawable.kar_prathna,
+                R.drawable.bhoomi_vandan,
+                R.drawable.sanhn_parthna,
+                R.drawable.annh_grahan,
+                R.drawable.shub_karoti,
+                R.drawable.jop_shlock
+        } ;
+    }
+    public static int [] getChildImageFive(){
+        return new int[]{
+                R.drawable.makarsankaranti,
+                R.drawable.maha_shivratri,
+                R.drawable.img_holi,
+                R.drawable.gudi_padwa,
+                R.drawable.img_ram,
+                R.drawable.akshay_tritiya,
+                R.drawable.vat_paurnima,
+                R.drawable.guru_paurnima,
+                R.drawable.nag_panchami,
+                R.drawable.nareli_paurnima,
+                R.drawable.janmasthami,
+                R.drawable.pola,
+                R.drawable.haritalika,
+                R.drawable.rushipanchami,
+                R.drawable.ganesh_stroat,
+                R.drawable.img_ganesh_arti,
+                R.drawable.img_navratri,
+                R.drawable.img_dusera,
+                R.drawable.img_dipawali
+        } ;
     }
 
     public static HashMap<String, List<String>> getData() {
