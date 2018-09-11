@@ -11,12 +11,11 @@
     android:scaleType="centerCrop"
     android:background="@drawable/splash_gb">
 
-
     <ImageView
         android:id="@+id/deep_bg"
         android:layout_width="187.17dp"
         android:layout_height="158.05dp"
-        android:src="@drawable/img_arrti"
+        android:src="@drawable/app_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,17 +24,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/deep_text"
+        android:text="@string/App_name"
         android:textAllCaps="true"
-        android:textColor="@color/deep_text_color"
+        android:textColor="@color/white"
         android:textSize="36sp"
-        android:textStyle="bold"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/fonts"
+        android:fontFamily="@font/quantico"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deep_bg" />
-
 
 </android.support.constraint.ConstraintLayout>

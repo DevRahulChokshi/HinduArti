@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activites.HomeActivity">
+        <activity android:name=".activites.SplashActivity"
+            android:theme="@style/FullscreenTheme">
 
             <!-- android:theme="@style/FullscreenTheme"> -->
             <intent-filter>
@@ -55,8 +56,13 @@
         <activity
             android:name=".activites.LoginActivity"
             android:theme="@style/FullscreenTheme" />
-        <activity android:name=".activites.SplashActivity" />
-        <activity android:name=".activites.DetailActivity"/>
+        <activity android:name=".activites.HomeActivity" />
+        <activity
+            android:name=".activites.DetailActivity"/>
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="REPLACE_WITH_YOUR_ADMOB_APP_ID"/>
     </application>
 
 </manifest>

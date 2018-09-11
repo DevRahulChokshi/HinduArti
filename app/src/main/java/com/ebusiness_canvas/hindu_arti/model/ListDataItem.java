@@ -1,5 +1,7 @@
 package com.ebusiness_canvas.hindu_arti.model;
 
+import android.location.Address;
+
 import com.ebusiness_canvas.hindu_arti.R;
 
 import java.util.ArrayList;
@@ -17,22 +19,25 @@ public class ListDataItem {
                 R.drawable.img_utsav,
         };
     }
+
     public static int [] getChildImageOne(){
         return new int[]{
-                R.drawable.img_ganesh_arti,
-                R.drawable.img_shiv,
-                R.drawable.img_dutta,
-                R.drawable.img_sri_devi_maa,
-                R.drawable.img_hanuman,
-                R.drawable.img_shree_krishna,
-                R.drawable.img_trupati_balaji,
-                R.drawable.swami_sadguru,
-                R.drawable.img_vitthal
-        } ;
+                    R.drawable.img_ganesh_arti,
+                    R.drawable.img_shiv,
+                    R.drawable.img_dutta,
+                    R.drawable.img_sri_devi_maa,
+                    R.drawable.img_hanuman,
+                    R.drawable.img_shree_krishna,
+                    R.drawable.img_trupati_balaji,
+                    R.drawable.swami_sadguru,
+                    R.drawable.img_vitthal,
+                    R.drawable.karpur,
+                    R.drawable.mantra_pushpajanli
+            } ;
     }
     public static int [] getChildImageTwo(){
         return new int[]{
-                R.drawable.karpur,
+                R.drawable.ganesh_vandan,
                 R.drawable.mantra_pushpajanli,
                 R.drawable.ganesh_vandan,
                 R.drawable.ganesh_stroat,
@@ -78,6 +83,7 @@ public class ListDataItem {
                 R.drawable.akshay_tritiya,
                 R.drawable.vat_paurnima,
                 R.drawable.guru_paurnima,
+                R.drawable.ashadhi_akadasmi,
                 R.drawable.nag_panchami,
                 R.drawable.nareli_paurnima,
                 R.drawable.janmasthami,
@@ -91,7 +97,6 @@ public class ListDataItem {
                 R.drawable.img_dipawali
         } ;
     }
-
     public static HashMap<String, List<String>> getData() {
 
         HashMap<String, List<String>> expandableListDetail = new HashMap<String, List<String>>();

@@ -58,8 +58,8 @@ public class RecyclerItemAdapter extends BaseExpandableListAdapter {
         }
 
         if (listPosition==0){
-            if(mImageChildImage !=null){
-                for (int i=0;i<expandableListTitle.size();i++){
+            if(mImageChildImage!=null){
+                for (int i=0;i<=expandableListTitle.size();i++){
                     ImageView  imageView=convertView.findViewById(R.id.imgItem);
                     imageView.setImageResource(mImageChildImage[expandedListPosition]);
                 }
@@ -67,7 +67,7 @@ public class RecyclerItemAdapter extends BaseExpandableListAdapter {
         }
         else if (listPosition==1) {
             if (mImageChildImageTwo != null) {
-                for (int i = 0; i < expandableListTitle.size(); i++) {
+                for (int i = 0; i <=expandableListTitle.size(); i++) {
                     ImageView imageView = convertView.findViewById(R.id.imgItem);
                     imageView.setImageResource(mImageChildImageTwo[expandedListPosition]);
                 }
@@ -75,7 +75,7 @@ public class RecyclerItemAdapter extends BaseExpandableListAdapter {
         }
         else if (listPosition==2) {
             if (mImageChildImageThree != null) {
-                for (int i = 0; i < expandableListTitle.size(); i++) {
+                for (int i = 0; i <=expandableListTitle.size(); i++) {
                     ImageView imageView = convertView.findViewById(R.id.imgItem);
                     imageView.setImageResource(mImageChildImageThree[expandedListPosition]);
                 }
@@ -83,7 +83,7 @@ public class RecyclerItemAdapter extends BaseExpandableListAdapter {
         }
         else if (listPosition==3) {
             if (mImageChildImageFour != null) {
-                for (int i = 0; i < expandableListTitle.size(); i++) {
+                for (int i = 0; i <=expandableListTitle.size(); i++) {
                     ImageView imageView = convertView.findViewById(R.id.imgItem);
                     imageView.setImageResource(mImageChildImageFour[expandedListPosition]);
                 }
@@ -91,13 +91,12 @@ public class RecyclerItemAdapter extends BaseExpandableListAdapter {
         }
         else if (listPosition==4) {
             if (mImageChildImageFive != null) {
-                for (int i = 0; i < expandableListTitle.size(); i++) {
+                for (int i = 0; i <=expandableListTitle.size(); i++) {
                     ImageView imageView = convertView.findViewById(R.id.imgItem);
                     imageView.setImageResource(mImageChildImageFive[expandedListPosition]);
                 }
             }
         }
-
 
         TextView expandedListTextView = (TextView) convertView
                 .findViewById(R.id.txtViewTitle);
