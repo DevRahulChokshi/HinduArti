@@ -8,5 +8,6 @@
     <dimen name="icon_bottom_margin">24dp</dimen>
     <dimen name="title_bottom_margin">16dp</dimen>
     <dimen name="field_width_standard">160dp</dimen>
-
+    <dimen name="itemSize">100dp</dimen>
+    <dimen name="itemBorderWidth">2dp</dimen>
 </resources>

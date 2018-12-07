@@ -1,88 +1,46 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <item name="colorPrimary">@color/primaryColorr</item>
-        <item name="colorPrimaryDark">@color/primaryDarkColorr</item>
-        <item name="colorAccent">@color/secondaryTextColorr</item>
-    </style>
-
-    <!-- Activity with no Title -->
-    <style name="ThemeOverlay.MyNoTitleActivity" parent="AppTheme">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <!-- Dark Buttons -->
-    <style name="ThemeOverlay.MyDarkButton" parent="ThemeOverlay.AppCompat.Dark">
-        <item name="colorButtonNormal">@color/grey_500</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:layout_marginRight">4dp</item>
-        <item name="android:layout_marginLeft">4dp</item>
-        <item name="android:textColor">@android:color/white</item>
-    </style>
-
-    <!-- Light EditTexts -->
-    <style name="ThemeOverlay.MyLightEditText" parent="ThemeOverlay.AppCompat.Dark"/>
-
-    <style name="ThemeOverlay.MyTextDetail" parent="AppTheme">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:fadeScrollbars">true</item>
-        <item name="android:gravity">center</item>
-        <item name="android:maxLines">5</item>
-        <item name="android:padding">4dp</item>
-        <item name="android:scrollbars">vertical</item>
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="ThemeOverlay.FirebaseIcon" parent="AppTheme">
-        <item name="android:layout_marginTop">@dimen/icon_top_margin</item>
-        <item name="android:layout_marginBottom">@dimen/icon_bottom_margin</item>
-    </style>
-
-    <style name="ThemeOverlay.MyTitleText" parent="AppTheme">
-        <item name="android:gravity">center</item>
-        <item name="android:textSize">36sp</item>
-    </style>
-
-    <style name="AppLoginTheme" parent="Theme.AccountKit">
-        <item name="com_accountkit_background_color">@color/ak_background</item>
-        <item name="com_accountkit_text_color">@color/ak_text</item>
-        <item name="com_accountkit_button_background_color">@color/ak_buttonBackground</item>
-        <item name="com_accountkit_button_pressed_background_color">@color/ak_buttonPressedBackground</item>
-        <item name="com_accountkit_button_text_color">@color/ak_buttonText</item>
-        <item name="com_accountkit_input_background_color">@color/ak_inputBackground</item>
-        <item name="com_accountkit_input_text_color">@color/ak_inputText</item>
-        <item name="com_accountkit_status_bar_color">@color/ak_statusBar</item>
-        <item name="com_accountkit_icon_color">@color/ak_icon</item>
-    </style>
-
-    <!-- Base application theme. -->
-    <style name="AppThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="MaterialTheme" parent="ParentMaterialTheme">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+
     </style>
 
-    <style name="FullscreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowTranslucentStatus">true</item>
+    <style name="ParentMaterialThemeBar" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <!-- Parent theme For all Pre - lollipop and lollipop above versions i.e. For all devices -->
+
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColorr</item>
+        <item name="colorAccent">@color/secondaryColorr</item>
+    </style>
+
+    <style name="ParentMaterialTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Parent theme For all Pre - lollipop and lollipop above versions i.e. For all devices -->
+
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColorr</item>
+        <item name="colorAccent">@color/secondaryColorr</item>
+    </style>
+
+    <style name="ToolBarTheme" parent="ThemeOverlay.AppCompat.Light">
+
+        <item name="android:textColorPrimary">#fff</item>    <!-- Text Color of Toolbar Title  -->
+        <item name="android:textColorSecondary">#fff</item>  <!-- Color of Overflow Menu ( 3 DOTS icon )
+                                                                    and color of Navigation Drawer Icon-->
     </style>
 
     <style name="PopupTheme"  parent="ThemeOverlay.AppCompat.Light">
-
         <item name="android:textColorPrimary">@color/grey_500</item>  <!-- Text color of Overflow Menu -->
         <item name="android:background">@color/overflowMenuBg</item>        <!-- Background of Overflow Menu -->
 
     </style>
 
-
-    <style name="ToolBarTheme"  parent="ThemeOverlay.AppCompat.Light">
-
-        <item name="android:textColorPrimary">#fff</item>    <!-- Text Color of Toolbar Title  -->
-        <item name="android:textColorSecondary">#fff</item>  <!-- Color of Overflow Menu ( 3 DOTS icon )
-                                                                    and color of Navigation Drawer Icon-->
+    <!-- style for Action Bar -->
+    <style name="MyActionBarTabStyle" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:paddingLeft">32dp</item>
+        <item name="android:paddingRight">32dp</item>
+        <item name="android:paddingTop">32dp</item>
+        <item name="android:paddingBottom">32dp</item>
     </style>
 
 

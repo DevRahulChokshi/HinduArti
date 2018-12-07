@@ -4,76 +4,97 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
-import android.widget.ExpandableListAdapter;
-import android.widget.ExpandableListView;
+import android.widget.AdapterView;
+import android.widget.GridView;
 
 import com.ebusiness_canvas.hindu_arti.R;
-import com.ebusiness_canvas.hindu_arti.adapter.RecyclerItemAdapter;
-import com.ebusiness_canvas.hindu_arti.model.ListDataItem;
+import com.ebusiness_canvas.hindu_arti.adapter.CustomGridViewAdapter;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import butterknife.ButterKnife;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private ExpandableListView mExpandableListView;
-    private ExpandableListAdapter mExpandableListAdapter;
-    private List<String> mExpandableListTitle;
-    private HashMap<String, List<String>> mExpandableListDetail;
+    private static final String TAG =HomeActivity.class.getSimpleName();
+
+    private GridView mGridItemList;
+    private Toolbar mHomeToolbar;
+
+    private int [] imageItemList = {
+                R.drawable.ic_baseline_description, R.drawable.ic_baseline_description,
+                R.drawable.ic_baseline_description, R.drawable.ic_baseline_description,
+                R.drawable.ic_baseline_description, R.drawable.ic_baseline_description,
+            };
+
+    private String [] strItemList={
+            "NityaKarma","Bhavishya",
+            "Article","Kundali",
+            "Pooja","Festival"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        mExpandableListView =  findViewById(R.id.expandableListView);
+        ButterKnife.bind(this);
 
-        setToolbar();
+        mGridItemList=findViewById(R.id.grid_view_image_text);
+        mHomeToolbar=findViewById(R.id.home_toolbar);
 
-        int [] imgGroupImage=ListDataItem.getGroupImage() ;
-        int [] imgChildOne=ListDataItem.getChildImageOne() ;
-        int [] imgChildTwo=ListDataItem.getChildImageTwo() ;
-        int [] imgChildThree=ListDataItem.getChildImageThree() ;
-        int [] imgChildFour=ListDataItem.getChildImageFour() ;
-        int [] imgChildFive=ListDataItem.getChildImageFive() ;
+        setUpToolbar();
 
-        mExpandableListDetail = ListDataItem.getData();
-        mExpandableListTitle = new ArrayList<String>(mExpandableListDetail.keySet());
-        mExpandableListAdapter = new RecyclerItemAdapter(this, mExpandableListTitle, mExpandableListDetail,imgGroupImage,imgChildOne,imgChildTwo,imgChildThree,imgChildFour,imgChildFive);
-        mExpandableListView.setAdapter(mExpandableListAdapter);
-        mExpandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+        CustomGridViewAdapter customAdapter = new CustomGridViewAdapter(getApplicationContext(),imageItemList,strItemList);
+        mGridItemList.setAdapter(customAdapter);
 
+        mGridItemList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onGroupExpand(int groupPosition) {
-
-            }
-        });
-
-        mExpandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-            @Override
-            public void onGroupCollapse(int groupPosition) { }
-
-
-        });
-
-        mExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
-                Intent intent=new Intent(getApplicationContext(),DetailActivity.class);
-                intent.putExtra("ListChildTitle",mExpandableListDetail.get(mExpandableListTitle.get(groupPosition)).get(childPosition));
-                startActivity(intent);
-                return false;
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:{
+                        Intent intent=new Intent(HomeActivity.this,ContainerActivity.class);
+                        startActivity(intent);
+                        break;
+                    }
+                    case 1:{
+                        Intent intent=new Intent(HomeActivity.this,BhavishyaActivity.class);
+                        startActivity(intent);
+                        break;
+                    }
+                    case 2:{
+                        Intent intent=new Intent(HomeActivity.this,ArticleActivity.class);
+                        startActivity(intent);
+                        break;
+                    }
+                    case 3:{
+                        Intent intent=new Intent(HomeActivity.this,KundaliActivity.class);
+                        startActivity(intent);
+                        break;
+                    }
+                    case 4:{
+                        Intent intent=new Intent(HomeActivity.this,PoojaActivity.class);
+                        startActivity(intent);
+                        break;
+                    }
+                    case 5:{
+                        Intent intent=new Intent(HomeActivity.this,FestivalActivity.class);
+                        startActivity(intent);
+                        break;
+                    }
+                }
             }
         });
     }
 
-    private void setToolbar() {
-        ActionBar actionBar=getSupportActionBar();
-        if (actionBar!=null)
-            actionBar.setTitle(R.string.title_home);
+    private void setUpToolbar () {
+        setSupportActionBar(mHomeToolbar);
+        ActionBar actionBar=getSupportActionBar ();
+        if (actionBar!=null){
+            actionBar.setTitle (R.string.home_title);
+        }
     }
 }
 
