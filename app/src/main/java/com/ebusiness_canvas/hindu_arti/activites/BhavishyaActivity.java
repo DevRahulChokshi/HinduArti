@@ -158,7 +158,7 @@ public class BhavishyaActivity extends AppCompatActivity {
         ActionBar actionBar=getSupportActionBar();
         if (actionBar!=null){
             actionBar.setDisplayShowTitleEnabled (true);
-            actionBar.setTitle (R.string.bhavishaya_detail);
+            actionBar.setTitle (R.string.bhavishaya);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }

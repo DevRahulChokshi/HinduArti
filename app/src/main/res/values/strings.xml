@@ -22,4 +22,5 @@
     <string name="hint_Birth_Place">Birth Place</string>
     <string name="hint_Birth_Date">Birth Date</string>
     <string name="childBhavishyaDetail">ChildBhavishyaDetail</string>
+    <string name="bhavishaya">Bhavishya</string>
 </resources>
