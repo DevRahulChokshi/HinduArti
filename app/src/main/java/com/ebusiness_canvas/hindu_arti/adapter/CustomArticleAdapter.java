@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.ebusiness_canvas.hindu_arti.R;
 import com.ebusiness_canvas.hindu_arti.activites.ArticleDetailActivity;
-import com.ebusiness_canvas.hindu_arti.activites.ContainerDetailActivity;
 import com.ebusiness_canvas.hindu_arti.model.Category;
 import com.ebusiness_canvas.hindu_arti.model.Contract;
 import com.squareup.picasso.Picasso;

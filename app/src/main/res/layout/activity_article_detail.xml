@@ -14,17 +14,22 @@
         android:minHeight="?attr/actionBarSize"
         app:popupTheme="@style/PopupTheme"
         app:theme="@style/ToolBarTheme" />
+
     <ImageView
         android:id="@+id/imgArticleDetail"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:contentDescription="TODO"
         android:src="@color/primaryColor"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/article_detail_toolbar"
-        android:contentDescription="TODO" />
+        app:layout_constraintTop_toBottomOf="@+id/article_detail_toolbar" />
+
     <TextView
         android:id="@+id/txtArticleDetailTitle"
         android:layout_width="wrap_content"
@@ -33,26 +38,28 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:textAlignment="center"
         android:text="@string/article_title_detail"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imgArticleDetail"
-        app:layout_constraintTop_toBottomOf="@+id/article_detail_toolbar" />
-    <TextView
-        android:id="@+id/txtArticleDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:textAlignment="center"
-        android:text="@string/article_detail_date"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imgArticleDetail"
-        app:layout_constraintTop_toBottomOf="@+id/txtArticleDetailTitle" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgArticleDetail" />
+
+    <!--<TextView-->
+        <!--android:id="@+id/txtArticleDate"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="10dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginRight="8dp"-->
+        <!--android:text="@string/article_detail_date"-->
+        <!--android:textAlignment="center"-->
+        <!--android:textSize="20sp"-->
+        <!--android:textStyle="bold"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/imgArticleDetail" />-->
+
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
@@ -64,7 +71,8 @@
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgArticleDetail">
+        app:layout_constraintTop_toBottomOf="@+id/txtArticleDetailTitle">
+
         <TextView
             android:id="@+id/txtArticleDetailContent"
             android:layout_width="match_parent"
@@ -73,5 +81,7 @@
             android:textAlignment="center"
             android:textSize="18sp"
             android:textStyle="bold" />
+
     </ScrollView>
+
 </android.support.constraint.ConstraintLayout>

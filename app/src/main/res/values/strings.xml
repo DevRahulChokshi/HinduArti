@@ -23,4 +23,15 @@
     <string name="hint_Birth_Date">Birth Date</string>
     <string name="childBhavishyaDetail">ChildBhavishyaDetail</string>
     <string name="bhavishaya">Bhavishya</string>
+    <string name="childBhavishya">Child Bhavishya</string>
+    <string name="childArticle">Childe Article</string>
+    <string name="childArticleDetail">Childe Detail</string>
+    <string name="childKundali">Child Kundali</string>
+    <string name="childFestival">Child Festival</string>
+    <string name="childFestivalDetail">Festival Detail</string>
+    <string name="childPooja">Child Pooja</string>
+    <string name="str_pooja">Pooja</string>
+    <string name="childNityaKarma">Nitya Karma</string>
+    <string name="childNityaKarmaDetail">Nitya Karma Detail</string>
+    <string name="hint_Birth_Time">Birth Time</string>
 </resources>

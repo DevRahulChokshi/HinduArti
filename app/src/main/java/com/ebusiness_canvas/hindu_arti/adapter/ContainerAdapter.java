@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ebusiness_canvas.hindu_arti.R;
-import com.ebusiness_canvas.hindu_arti.activites.ContainerDetailActivity;
+import com.ebusiness_canvas.hindu_arti.activites.NityaKarmaDetailActivity;
 import com.ebusiness_canvas.hindu_arti.model.Category;
 import com.ebusiness_canvas.hindu_arti.model.Contract;
 import com.squareup.picasso.Picasso;
@@ -55,7 +55,7 @@ public class ContainerAdapter extends RecyclerView.Adapter<ContainerAdapter.MyVi
             @Override
             public void onClick (View v) {
                 String strCategoryID=(String)holder.mTextID.getText ();
-                Intent intent=new Intent (context.getApplicationContext (),ContainerDetailActivity.class);
+                Intent intent=new Intent (context.getApplicationContext (),NityaKarmaDetailActivity.class);
                 intent.putExtra (Contract.CATEGORY_ID,strCategoryID);
                 context.startActivity (intent);
             }

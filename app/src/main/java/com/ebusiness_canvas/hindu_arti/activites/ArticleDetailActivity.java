@@ -55,7 +55,7 @@ public class ArticleDetailActivity extends AppCompatActivity {
         mImgAvatar=findViewById(R.id.imgArticleDetail);
         mTxtArticleDetailTitle=findViewById(R.id.txtArticleDetailTitle);
         mTxtArticleDetailContent=findViewById(R.id.txtArticleDetailContent);
-        mTxtArticleDate=findViewById(R.id.txtArticleDate);
+//        mTxtArticleDate=findViewById(R.id.txtArticleDate);
         mToolbar=findViewById(R.id.article_detail_toolbar);
 
         setUpToolbar();
@@ -163,7 +163,7 @@ public class ArticleDetailActivity extends AppCompatActivity {
     private void setUpData(String categoryName,String categoryAvatar,String categoryDetail,String categoryDate) {
         mTxtArticleDetailTitle.setText(categoryName);
         mTxtArticleDetailContent.setText(categoryDetail);
-        mTxtArticleDate.setText(categoryDate);
+//        mTxtArticleDate.setText(categoryDate);
         Picasso.get().load(categoryAvatar).into(mImgAvatar);
     }
 }

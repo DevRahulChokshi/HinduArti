@@ -46,8 +46,9 @@ public class CustomBhavishyaAdapter extends BaseAdapter {
         ImageView icon = convertView.findViewById(R.id.imgBhavishyaImage);
         TextView txtTitle = convertView.findViewById(R.id.txtBhavishyaTitle);
 
-        icon.setImageResource(imageItemList[position]);
         txtTitle.setText(strItemList[position]);
+        icon.setImageResource(imageItemList[position]);
+
         return convertView;
     }
 }

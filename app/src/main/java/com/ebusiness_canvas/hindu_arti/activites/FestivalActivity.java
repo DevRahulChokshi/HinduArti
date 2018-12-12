@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.widget.TextView;
 
 import com.ebusiness_canvas.hindu_arti.R;
 import com.ebusiness_canvas.hindu_arti.adapter.CustomFestivalAdapter;
@@ -35,7 +34,6 @@ public class FestivalActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private CustomFestivalAdapter customFestivalAdapter;
     private Toolbar mContainerToolBar;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -9,6 +9,7 @@ public class Contract  {
     public static final String CATEGORY_NAME = "category_name";
     public static final String CATEGORY_ID = "CATEGORY_ID";
     public static final String POST_POOJA_DATA = "http://www.ebusinesscanvas.com/nityakarma/android_app/post_pooja_data.php";
+    public static final String POST_KUNDALI_DATA = "http://www.ebusinesscanvas.com/nityakarma/android_app/post_kundali_data.php";
     public static String PAGE_SUB_CONTENT_ID = "psc_name";
     public static String BHAVISHYA_NAME = "bhavishya_ID";
     public static String GET_CATEGORY="http://www.ebusinesscanvas.com/nityakarma/android_app/rest_category.php";

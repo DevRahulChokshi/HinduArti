@@ -1,14 +1,21 @@
 package com.ebusiness_canvas.hindu_arti.activites;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.ebusiness_canvas.hindu_arti.R;
 import com.ebusiness_canvas.hindu_arti.adapter.ContainerAdapter;
@@ -26,15 +33,16 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class ContainerActivity extends AppCompatActivity {
+public class NityaKarmaActivity extends AppCompatActivity {
 
-    private static final String TAG=ContainerActivity.class.getSimpleName();
+    private static final String TAG=NityaKarmaActivity.class.getSimpleName();
 
     private ArrayList<Category> mListData;
     private ProgressDialog progressDialog;
     private ContainerAdapter containerAdapter;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
+    private ConstraintLayout constraintLayout;
     private Toolbar mContainerToolBar;
 
     @Override
@@ -46,14 +54,39 @@ public class ContainerActivity extends AppCompatActivity {
 
         recyclerView=findViewById(R.id.recyclerItemList);
         mContainerToolBar=findViewById(R.id.container_toolbar);
-        layoutManager=new LinearLayoutManager(ContainerActivity.this);
+        constraintLayout=findViewById(R.id.container_constrain);
+        layoutManager=new LinearLayoutManager(NityaKarmaActivity.this);
         recyclerView.setLayoutManager(layoutManager);
 
         setUpToolbar();
 
         mListData=new ArrayList<>();
-        CategoryAsyncTask asyncTask=new CategoryAsyncTask();
-        asyncTask.execute();
+
+        checkNetWorkConnection();
+
+    }
+
+    private void checkNetWorkConnection() {
+        boolean netWorkState=checkNetworkState();
+        if (netWorkState){
+                CategoryAsyncTask asyncTask=new CategoryAsyncTask();
+                asyncTask.execute();
+        }else {
+            Snackbar snackbar = Snackbar
+                    .make(constraintLayout,"Please check internet connection!", Snackbar.LENGTH_LONG);
+            View sbView = snackbar.getView();
+            TextView textView =sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
+        }
+    }
+
+
+    private boolean checkNetworkState() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
     }
 
     class CategoryAsyncTask extends AsyncTask<Void,Void,Boolean>{
@@ -62,7 +95,7 @@ public class ContainerActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            progressDialog=new ProgressDialog(ContainerActivity.this);
+            progressDialog=new ProgressDialog(NityaKarmaActivity.this);
             progressDialog.setMessage("Loading..");
             progressDialog.show();
         }
@@ -104,7 +137,7 @@ public class ContainerActivity extends AppCompatActivity {
                 }else {
                     return false;
                 }
-                ContainerActivity.this.runOnUiThread(new Runnable() {
+                NityaKarmaActivity.this.runOnUiThread(new Runnable() {
                     public void run() {
                         setRecycler();
                     }
@@ -124,7 +157,7 @@ public class ContainerActivity extends AppCompatActivity {
     }
 
     private void setRecycler () {
-        containerAdapter=new ContainerAdapter(ContainerActivity.this,mListData);
+        containerAdapter=new ContainerAdapter(NityaKarmaActivity.this,mListData);
         recyclerView.setAdapter (containerAdapter);
     }
 
@@ -133,6 +166,8 @@ public class ContainerActivity extends AppCompatActivity {
         ActionBar actionBar=getSupportActionBar ();
         if (actionBar!=null){
             actionBar.setTitle (R.string.App_name);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
         }
     }
 }

@@ -25,7 +25,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class ContainerDetailActivity extends YouTubeBaseActivity {
+public class NityaKarmaDetailActivity extends YouTubeBaseActivity {
 
     private YouTubePlayerView playerView ;
     private ProgressDialog progressDialog;
@@ -36,7 +36,7 @@ public class ContainerDetailActivity extends YouTubeBaseActivity {
     private String SubCategoryAvatar;
     private String SubCategoryDiscreption;
 
-    private static final String TAG=ContainerDetailActivity.class.getSimpleName();
+    private static final String TAG=NityaKarmaDetailActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +87,7 @@ public class ContainerDetailActivity extends YouTubeBaseActivity {
 
         @Override
         protected void onPreExecute() {
-            progressDialog=new ProgressDialog(ContainerDetailActivity.this);
+            progressDialog=new ProgressDialog(NityaKarmaDetailActivity.this);
             progressDialog.setMessage("Loading..");
             progressDialog.show();
         }

@@ -1,23 +1,26 @@
 package com.ebusiness_canvas.hindu_arti.activites;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.ebusiness_canvas.hindu_arti.R;
-import com.ebusiness_canvas.hindu_arti.model.Category;
 import com.ebusiness_canvas.hindu_arti.model.Contract;
-
-import org.json.JSONArray;
 
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
@@ -34,6 +37,7 @@ public class PoojaActivity extends AppCompatActivity {
     private TextInputLayout mInputUserName,mInputContactNumber,mInputEmail,mInputAddress;
     private ProgressDialog mProgressDialog;
     private FloatingActionButton mFabButton;
+    private ConstraintLayout constraintLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,8 @@ public class PoojaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pooja);
 
         mToolbar=findViewById(R.id.pooja_toolbar);
+
+        constraintLayout=findViewById(R.id.constraintPooja);
 
         mEdtUserName=findViewById(R.id.editUserName);
         mEdtContactNumber=findViewById(R.id.editUserPhoneNumber);
@@ -59,11 +65,27 @@ public class PoojaActivity extends AppCompatActivity {
         mFabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean checkState=checkNetworkState();
 
-                checkValidation();
-
+                if (checkState){
+                    checkValidation();
+                }else {
+                    Snackbar snackbar = Snackbar
+                            .make(constraintLayout,"Please check internet connection!", Snackbar.LENGTH_LONG);
+                    View sbView = snackbar.getView();
+                    TextView textView =sbView.findViewById(android.support.design.R.id.snackbar_text);
+                    textView.setTextColor(Color.WHITE);
+                    snackbar.show();
+                }
             }
         });
+    }
+
+    private boolean checkNetworkState() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
     }
 
     private void checkValidation() {
@@ -111,7 +133,7 @@ public class PoojaActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         ActionBar actionBar=getSupportActionBar ();
         if (actionBar!=null){
-            actionBar.setTitle (R.string.str_festival_detail);
+            actionBar.setTitle (R.string.str_pooja);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
@@ -167,6 +189,7 @@ public class PoojaActivity extends AppCompatActivity {
         protected void onPostExecute(Boolean aBoolean) {
             if (aBoolean){
                 mProgressDialog.dismiss();
+                Snackbar.make(constraintLayout,"Your request is sent.",Snackbar.LENGTH_LONG).show();
             }
         }
     }

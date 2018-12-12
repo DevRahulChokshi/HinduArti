@@ -47,6 +47,8 @@ public class ArticleActivity extends AppCompatActivity {
 
         setUpToolbar();
         mListData=new ArrayList<>();
+
+
         ArticleAsyncTask articleAsyncTask=new ArticleAsyncTask();
         articleAsyncTask.execute();
     }

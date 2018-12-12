@@ -3,6 +3,7 @@
     package="com.ebusiness_canvas.hindu_arti">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -23,10 +24,27 @@
         </activity>
 
         <activity android:name=".activites.HomeActivity" />
-        <activity android:name=".activites.DetailActivity" />
-        <activity android:name=".activites.ContainerActivity" />
-        <activity android:name=".activites.ContainerDetailActivity" />
-        <activity android:name=".activites.BhavishyaActivity" />
+        <activity   android:name=".activites.NityaKarmaActivity"
+                    android:label="@string/childNityaKarma"
+                    android:parentActivityName=".activites.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activites.HomeActivity"/>
+        </activity>
+        <activity   android:name=".activites.NityaKarmaDetailActivity"
+                    android:label="@string/childNityaKarmaDetail"
+                    android:parentActivityName=".activites.NityaKarmaActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activites.NityaKarmaActivity"/>
+        </activity>
+        <activity   android:name=".activites.BhavishyaActivity"
+                    android:label="@string/childBhavishya"
+                    android:parentActivityName=".activites.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activites.HomeActivity"/>
+        </activity>
         <activity   android:name=".activites.BhavishyaDetailActivity"
                     android:label="@string/childBhavishyaDetail"
                     android:parentActivityName=".activites.BhavishyaActivity">
@@ -34,13 +52,48 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activites.BhavishyaActivity"/>
         </activity>
-        <activity android:name=".activites.ArticleActivity" />
-        <activity android:name=".activites.ArticleDetailActivity" />
-        <activity android:name=".activites.FestivalActivity" />
-        <activity android:name=".activites.FestivalDetailActivity" />
-        <activity android:name=".activites.PoojaActivity" />
-        <activity android:name=".activites.KundaliActivity"/>
-
+        <activity   android:name=".activites.ArticleActivity"
+                    android:label="@string/childArticle"
+                    android:parentActivityName=".activites.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activites.HomeActivity"/>
+        </activity>
+        <activity   android:name=".activites.ArticleDetailActivity"
+                    android:label="@string/childArticleDetail"
+                    android:parentActivityName=".activites.ArticleActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activites.ArticleActivity"/>
+        </activity>
+        <activity   android:name=".activites.FestivalActivity"
+                    android:label="@string/childFestival"
+                    android:parentActivityName=".activites.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activites.HomeActivity"/>
+        </activity>
+        <activity   android:name=".activites.FestivalDetailActivity"
+                    android:label="@string/childFestivalDetail"
+                    android:parentActivityName=".activites.FestivalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activites.FestivalActivity"/>
+        </activity>
+        <activity   android:name=".activites.PoojaActivity"
+                    android:label="@string/childPooja"
+                    android:parentActivityName=".activites.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activites.HomeActivity"/>
+        </activity>
+        <activity   android:name=".activites.KundaliActivity"
+                    android:label="@string/childKundali"
+                    android:parentActivityName=".activites.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activites.HomeActivity"/>
+        </activity>
     </application>
 
 </manifest>

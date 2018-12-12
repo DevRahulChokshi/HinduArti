@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -25,7 +24,7 @@ public class HomeActivity extends AppCompatActivity {
     private int [] imageItemList = {
                 R.drawable.ic_baseline_description, R.drawable.ic_baseline_description,
                 R.drawable.ic_baseline_description, R.drawable.ic_baseline_description,
-                R.drawable.ic_baseline_description, R.drawable.ic_baseline_description,
+                R.drawable.ic_pooja, R.drawable.ic_festival,
             };
 
     private String [] strItemList={
@@ -55,7 +54,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:{
-                        Intent intent=new Intent(HomeActivity.this,ContainerActivity.class);
+                        Intent intent=new Intent(HomeActivity.this,NityaKarmaActivity.class);
                         startActivity(intent);
                         break;
                     }
