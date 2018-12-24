@@ -4,10 +4,12 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,6 +46,7 @@ public class ArticleDetailActivity extends AppCompatActivity {
     private Toolbar   mToolbar;
     private ArrayList<Category> mListData;
     private ProgressDialog progressDialog;
+    private FloatingActionButton actionButton;
 
     private static final String TAG=ArticleDetailActivity.class.getSimpleName();
 
@@ -55,8 +58,9 @@ public class ArticleDetailActivity extends AppCompatActivity {
         mImgAvatar=findViewById(R.id.imgArticleDetail);
         mTxtArticleDetailTitle=findViewById(R.id.txtArticleDetailTitle);
         mTxtArticleDetailContent=findViewById(R.id.txtArticleDetailContent);
-//        mTxtArticleDate=findViewById(R.id.txtArticleDate);
+//      mTxtArticleDate=findViewById(R.id.txtArticleDate);
         mToolbar=findViewById(R.id.article_detail_toolbar);
+        actionButton=findViewById(R.id.fabArticleDetail);
 
         setUpToolbar();
         getIntentData();
@@ -64,6 +68,16 @@ public class ArticleDetailActivity extends AppCompatActivity {
         ArticleDetailAsyncTask articleDetailAsyncTask=new ArticleDetailAsyncTask();
         articleDetailAsyncTask.execute(strPosition);
 
+        actionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, CategoryName);
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, CategoryDetail);
+                startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.share_using)));
+            }
+        });
     }
 
     private void setUpToolbar() {
@@ -136,7 +150,6 @@ public class ArticleDetailActivity extends AppCompatActivity {
                         Log.i(TAG,CategoryAvatar);
                         Log.i(TAG,CategoryDetail);
                         Log.i(TAG,CategoryDate);
-
                     }
                 }else {
                     return false;

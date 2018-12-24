@@ -52,10 +52,10 @@ public class CustomGridViewAdapter extends BaseAdapter {
 
         convertView = inflter.inflate(R.layout.customize_gridview,null);
 
-//        ImageView icon = convertView.findViewById(R.id.imgItem);
+        ImageView icon = convertView.findViewById(R.id.imgItem);
         TextView txtTitle = convertView.findViewById(R.id.txtTitleItem);
 
-//        icon.setImageResource(imageItemList[position]);
+        icon.setImageResource(imageItemList[position]);
         txtTitle.setText(strItemList[position]);
         return convertView;
     }

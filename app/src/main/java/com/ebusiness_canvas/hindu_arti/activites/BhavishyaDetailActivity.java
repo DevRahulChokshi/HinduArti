@@ -4,10 +4,14 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetDialog;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ebusiness_canvas.hindu_arti.R;
@@ -27,26 +31,33 @@ public class BhavishyaDetailActivity extends AppCompatActivity {
 
     private TextView mTxtBhavishyaTitle;
     private TextView mTxtBhavishyaDetail;
+    private TextView mTxtDate;
 
     private Toolbar mToolbarBhavishya;
+    private FloatingActionButton actionButton;
     private ArrayList<String> mStrList;
     private ProgressDialog progressDialog;
 
     private String SubCategoryName;
     private String SubCategoryAvatar;
     private String SubCategoryDiscreption;
+    private String SubCategoryDate;
     private String BhavishyaName;
+    private ImageView mImageView;
 
     private static final String TAG=BhavishyaDetailActivity.class.getSimpleName();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle   savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bhavishya_detail);
 
         mTxtBhavishyaTitle=findViewById(R.id.txtTitle);
         mTxtBhavishyaDetail=findViewById(R.id.txtBhavishyaDetail);
+        mTxtDate=findViewById(R.id.txtDate);
         mToolbarBhavishya=findViewById(R.id.bhavishyaDetailToolbar);
+        mImageView=findViewById(R.id.imgIcons);
+        actionButton=findViewById(R.id.fabBhavishyaDetail);
 
         setUpToolbar();
 
@@ -68,6 +79,17 @@ public class BhavishyaDetailActivity extends AppCompatActivity {
 
         BhavishyaDetailAsyncTask detailAsyncTask=new BhavishyaDetailAsyncTask();
         detailAsyncTask.execute();
+
+        actionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                    sharingIntent.setType("text/plain");
+                    sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, SubCategoryName);
+                    sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, SubCategoryDiscreption);
+                startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.share_using)));
+            }
+        });
     }
 
     private void setUpToolbar() {
@@ -89,6 +111,7 @@ public class BhavishyaDetailActivity extends AppCompatActivity {
                 int strPosition=bundle.getInt ("Position",0);
                 Log.i(TAG,"Position:"+strPosition);
                 BhavishyaName=mStrList.get(strPosition);
+                setImageView(strPosition);
             }else {
                 Log.i (TAG,"Bundle is Null");
             }
@@ -96,6 +119,59 @@ public class BhavishyaDetailActivity extends AppCompatActivity {
         else {
             Log.i (TAG,"Intent is Null");
 
+        }
+    }
+
+    private void setImageView(int strPosition) {
+        switch (strPosition){
+            case 0:{
+                mImageView.setImageDrawable(getResources().getDrawable(R.drawable.icon_aries));
+                break;
+            }
+            case 1:{
+                mImageView.setImageDrawable(getResources().getDrawable(R.drawable.icon_taurus));
+                break;
+            }
+            case 2:{
+                mImageView.setImageDrawable(getResources().getDrawable(R.drawable.icon_gemini_zodiac));
+                break;
+            }
+            case 3:{
+                mImageView.setImageDrawable(getResources().getDrawable(R.drawable.icon_cancer));
+                break;
+            }
+            case 4:{
+                mImageView.setImageDrawable(getResources().getDrawable(R.drawable.icon_leo));
+                break;
+            }
+            case 5:{
+                mImageView.setImageDrawable(getResources().getDrawable(R.drawable.icon_virgo));
+                break;
+            }
+            case 6:{
+                mImageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_icon_libra));
+                break;
+            }
+            case 7:{
+                mImageView.setImageDrawable(getResources().getDrawable(R.drawable.icon_scorpio));
+                break;
+            }
+            case 8:{
+                mImageView.setImageDrawable(getResources().getDrawable(R.drawable.icon_sagittarius_sign));
+                break;
+            }
+            case 9:{
+                mImageView.setImageDrawable(getResources().getDrawable(R.drawable.icon_capricorn));
+                break;
+            }
+            case 10:{
+                mImageView.setImageDrawable(getResources().getDrawable(R.drawable.icon_aquarius));
+                break;
+            }
+            case 11:{
+                mImageView.setImageDrawable(getResources().getDrawable(R.drawable.icon_pisces));
+                break;
+            }
         }
     }
 
@@ -139,14 +215,16 @@ public class BhavishyaDetailActivity extends AppCompatActivity {
                         SubCategoryName=jsonArray.getJSONObject(i).getString("p_name");
                         SubCategoryAvatar=jsonArray.getJSONObject(i).getString("video");
                         SubCategoryDiscreption=jsonArray.getJSONObject(i).getString("p_dis");
+                        SubCategoryDate=jsonArray.getJSONObject(i).getString("record_date");
 
                         Log.i(TAG,SubCategoryName);
                         Log.i(TAG,SubCategoryAvatar);
                         Log.i(TAG,SubCategoryDiscreption);
+                        Log.i(TAG,SubCategoryDate);
 
                         BhavishyaDetailActivity.this.runOnUiThread(new Runnable() {
                             public void run() {
-                              setData(SubCategoryName,SubCategoryAvatar,SubCategoryDiscreption);
+                              setData(SubCategoryName,SubCategoryAvatar,SubCategoryDiscreption,SubCategoryDate);
                             }
                         });
                     }
@@ -167,8 +245,9 @@ public class BhavishyaDetailActivity extends AppCompatActivity {
         }
     }
 
-    private void setData(String subCategoryName,String subCategoryAvatar,String subCategoryDescription) {
+    private void setData(String subCategoryName, String subCategoryAvatar, String subCategoryDescription, String subCategoryDate) {
         mTxtBhavishyaTitle.setText(subCategoryName);
+        mTxtDate.setText(subCategoryDate);
         mTxtBhavishyaDetail.setText(subCategoryDescription);
     }
 }

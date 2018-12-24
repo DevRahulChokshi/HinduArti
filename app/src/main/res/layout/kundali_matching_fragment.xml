@@ -1,27 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/constrainKundaliMatching"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/txtMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Male"
+                    android:textColor="@color/primaryDarkColorr"
+                    android:textSize="20sp"/>
 
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputKundaliMatchingUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/txtMale">
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/editKundaliMatchingUserName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_outline_person"
+                        android:drawableRight="@drawable/ic_outline_person"
+                        android:hint="@string/hint_UserName"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp" />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputKundaliMatchingBirthPlace"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/inputKundaliMatchingUserName">
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/editKundaliMatchingBirthPlace"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_Birth_Place"
+                        android:inputType="text"
+                        android:drawableRight="@drawable/ic_outline_location_on"
+                        android:drawableEnd="@drawable/ic_outline_location_on"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:padding="10dp" />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputKundaliMatchingDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/inputKundaliMatchingBirthPlace">
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/editKundaliMatchingBirthDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/ic_outline_calendar_today"
+                        android:drawableEnd="@drawable/ic_outline_calendar_today"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:hint="@string/hint_Birth_Date"
+                        android:onClick="onDialogCalender"
+                        android:inputType="text"
+                        android:padding="10dp"/>
+                </android.support.design.widget.TextInputLayout>
 
-    <TextView
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputKundaliMatchingTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/inputKundaliMatchingDate">
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/editKundaliMatchingTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_Birth_Time"
+                        android:drawableRight="@drawable/ic_baseline_access_time"
+                        android:drawableEnd="@drawable/ic_baseline_access_time"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:inputType="text"
+                        android:padding="10dp"/>
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+    </ScrollView>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabKundaliMatching"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Kundali Matching"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:background="@color/primaryColor"
+        android:src="@drawable/ic_baseline_arrow_forward"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-
+        app:layout_constraintEnd_toEndOf="parent" />
 </android.support.constraint.ConstraintLayout>

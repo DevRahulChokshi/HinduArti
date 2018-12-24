@@ -6,11 +6,11 @@
     <string name="home_title">Home</string>
     <string name="grid_detail">Daily hindu routine and morning exercise</string>
     <string name="bhavishaya_detail">Bhavishya Detail</string>
-    <string name="article_title">Article</string>
+    <string name="article_title">लेख</string>
     <string name="article_title_detail">Google Pixel 3 Phone</string>
     <string name="article_detail_date">22, Jan 2018</string>
     <string name="article_detail">Article Detail</string>
-    <string name="str_festival">Festival</string>
+    <string name="str_festival">त्यौहार</string>
     <string name="txt_festival_ganesh">Ganesh Chaturthi</string>
     <string name="txt_festival_ganesh_date">13 September 2018, Monday</string>
     <string name="str_festival_detail">Festival Detail</string>
@@ -18,11 +18,11 @@
     <string name="hint_UserAddress">Address</string>
     <string name="hint_UserPhoneNumber">Contact Number</string>
     <string name="hint_UserEmail">Email</string>
-    <string name="kundali_title">Kundali</string>
+    <string name="kundali_title">कुंडली</string>
     <string name="hint_Birth_Place">Birth Place</string>
     <string name="hint_Birth_Date">Birth Date</string>
     <string name="childBhavishyaDetail">ChildBhavishyaDetail</string>
-    <string name="bhavishaya">Bhavishya</string>
+    <string name="bhavishaya">भविष्य</string>
     <string name="childBhavishya">Child Bhavishya</string>
     <string name="childArticle">Childe Article</string>
     <string name="childArticleDetail">Childe Detail</string>
@@ -30,8 +30,10 @@
     <string name="childFestival">Child Festival</string>
     <string name="childFestivalDetail">Festival Detail</string>
     <string name="childPooja">Child Pooja</string>
-    <string name="str_pooja">Pooja</string>
+    <string name="str_pooja">पूजा</string>
     <string name="childNityaKarma">Nitya Karma</string>
     <string name="childNityaKarmaDetail">Nitya Karma Detail</string>
     <string name="hint_Birth_Time">Birth Time</string>
+    <string name="menu_title">Menu</string>
+    <string name="share_using">Share detail</string>
 </resources>

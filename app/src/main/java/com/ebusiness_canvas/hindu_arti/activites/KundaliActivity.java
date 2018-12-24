@@ -1,13 +1,12 @@
 package com.ebusiness_canvas.hindu_arti.activites;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.ebusiness_canvas.hindu_arti.R;
 import com.ebusiness_canvas.hindu_arti.adapter.PagerEditTradingDetails;
@@ -30,7 +29,7 @@ public class KundaliActivity extends AppCompatActivity implements TabLayout.OnTa
         viewPager=findViewById(R.id.pager_trading_tab_view);
 
         tabLayout.addTab(tabLayout.newTab().setText("Kundali"));
-        tabLayout.addTab(tabLayout.newTab().setText("Kundali Matching"));
+        tabLayout.addTab(tabLayout.newTab().setText("Kundali-Matching"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         PagerEditTradingDetails adapter = new PagerEditTradingDetails(getSupportFragmentManager(), tabLayout.getTabCount());

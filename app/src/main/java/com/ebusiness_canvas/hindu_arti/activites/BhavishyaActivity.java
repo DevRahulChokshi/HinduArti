@@ -20,20 +20,21 @@ public class BhavishyaActivity extends AppCompatActivity {
     private Toolbar mToolbarBhavishya;
 
     private int [] imageItemList = {
-            R.drawable.ic_leo_astrological_sign, R.drawable.ic_libra_scale_balance_symbol,
-            R.drawable.ic_leo_astrological_sign, R.drawable.ic_libra_scale_balance_symbol,
-            R.drawable.ic_leo_astrological_sign, R.drawable.ic_libra_scale_balance_symbol,
-            R.drawable.ic_leo_astrological_sign, R.drawable.ic_libra_scale_balance_symbol,
-            R.drawable.ic_leo_astrological_sign, R.drawable.ic_libra_scale_balance_symbol,
-            R.drawable.ic_leo_astrological_sign, R.drawable.ic_libra_scale_balance_symbol,
+            R.drawable.icon_aries, R.drawable.icon_taurus,
+            R.drawable.icon_gemini_zodiac, R.drawable.icon_cancer,
+            R.drawable.icon_leo,R.drawable.icon_virgo,
+            R.drawable.icon_library_demo,R.drawable.icon_scorpio,
+            R.drawable.icon_sagittarius_sign,R.drawable.icon_capricorn,
+            R.drawable.icon_aquarius,R.drawable.icon_pisces,
     };
 
     private String [] strItemList={
-            "Maish","Vrish","Mithun","Kark",
-            "Singh","Kanya",
-            "Vrishchik","Tula",
-            "Dhanu", "Makar",
-            "Kumbh","Meen"
+            "मेष","वृषभ",
+            "मिथुन","कर्क",
+            "सिंह","कन्या",
+            "तुला","वृश्चिक",
+            "धनु", "मकर",
+            "कुंभ","मीन"
     };
 
     @Override
@@ -76,6 +77,7 @@ public class BhavishyaActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     }
+
                     case 3:{
                         Intent intent=new Intent(BhavishyaActivity.this,BhavishyaDetailActivity.class);
                         Log.i(TAG,"Position:"+position);
@@ -163,5 +165,4 @@ public class BhavishyaActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
     }
-
 }

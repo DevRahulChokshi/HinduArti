@@ -22,15 +22,15 @@ public class HomeActivity extends AppCompatActivity {
     private Toolbar mHomeToolbar;
 
     private int [] imageItemList = {
-                R.drawable.ic_baseline_description, R.drawable.ic_baseline_description,
-                R.drawable.ic_baseline_description, R.drawable.ic_baseline_description,
-                R.drawable.ic_pooja, R.drawable.ic_festival,
+                R.drawable.ic_icon_nityakarma, R.drawable.ic_icon_bhavishya,
+                R.drawable.ic_icon_article, R.drawable.ic_icon_kundali,
+                R.drawable.ic_icon_pooja, R.drawable.ic_icon_festival,
             };
 
     private String [] strItemList={
-            "NityaKarma","Bhavishya",
-            "Article","Kundali",
-            "Pooja","Festival"
+            "नित्य कर्म","भविष्य",
+            "लेख","कुंडली",
+            "पूजा","त्यौहार"
     };
 
     @Override
@@ -92,7 +92,7 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(mHomeToolbar);
         ActionBar actionBar=getSupportActionBar ();
         if (actionBar!=null){
-            actionBar.setTitle (R.string.home_title);
+            actionBar.setTitle (R.string.menu_title);
         }
     }
 }

@@ -1,19 +1,21 @@
 package com.ebusiness_canvas.hindu_arti.activites;
 
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.TextView;
 
 import com.ebusiness_canvas.hindu_arti.R;
 import com.ebusiness_canvas.hindu_arti.model.Category;
 import com.ebusiness_canvas.hindu_arti.model.Contract;
-import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayerView;
+import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 
 import org.json.JSONArray;
 
@@ -25,9 +27,12 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class NityaKarmaDetailActivity extends YouTubeBaseActivity {
+public class NityaKarmaDetailActivity extends AppCompatActivity {
 
-    private YouTubePlayerView playerView ;
+    private static final String TAG=NityaKarmaDetailActivity.class.getSimpleName();
+
+    private YouTubePlayerSupportFragment youTubePlayerFragment;
+    private YouTubePlayer youTubePlayer;
     private ProgressDialog progressDialog;
     private ArrayList<Category> categories;
     private TextView mTextDisplay;
@@ -35,37 +40,36 @@ public class NityaKarmaDetailActivity extends YouTubeBaseActivity {
     private String SubCategoryName;
     private String SubCategoryAvatar;
     private String SubCategoryDiscreption;
-
-    private static final String TAG=NityaKarmaDetailActivity.class.getSimpleName();
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container_detail_acticity);
 
-        playerView = findViewById(R.id.player);
         mTextDisplay = findViewById(R.id.txtDetail);
+        mToolbar=findViewById(R.id.toolbar_nityakarma_detail);
 
-        categories=new ArrayList<>();
         checkIntentData();
+        setToolBar();
+        categories=new ArrayList<>();
+
         CategoryDetailAsyncTask detailAsyncTask=new CategoryDetailAsyncTask();
         detailAsyncTask.execute(mCategoryName);
 
-        playerView.initialize("AIzaSyAf8oOA_RPoQXyz5V9PbhJwt0bfwFGT-pA",
-                new YouTubePlayer.OnInitializedListener() {
-                    @Override
-                    public void onInitializationSuccess(YouTubePlayer.Provider provider,
-                                                        YouTubePlayer youTubePlayer, boolean b) {
-                        // do any work here to cue video, play video, etc.
-                        Log.i(TAG,"SubCategory:-"+SubCategoryAvatar);
-                        youTubePlayer.cueVideo(SubCategoryAvatar);
-                    }
-                    @Override
-                    public void onInitializationFailure(YouTubePlayer.Provider provider,
-                                                        YouTubeInitializationResult youTubeInitializationResult) {
-                    }
-        });
+        initializeYoutubePlayer();
     }
+
+    private void setToolBar() {
+        setSupportActionBar(mToolbar);
+        android.support.v7.app.ActionBar actionBar=getSupportActionBar ();
+        if (actionBar!=null){
+            actionBar.setTitle (R.string.app_name);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+        }
+    }
+
 
     private void checkIntentData () {
         Intent intent=getIntent ();
@@ -79,6 +83,37 @@ public class NityaKarmaDetailActivity extends YouTubeBaseActivity {
         }else{
             Log.i (TAG,"Intent is null");
         }
+    }
+
+    private void initializeYoutubePlayer() {
+
+        youTubePlayerFragment = (YouTubePlayerSupportFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.youtube_player_fragment);
+
+        if (youTubePlayerFragment == null)
+            return;
+
+        youTubePlayerFragment.initialize("AIzaSyAf8oOA_RPoQXyz5V9PbhJwt0bfwFGT-pA", new YouTubePlayer.OnInitializedListener() {
+
+            @Override
+            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player,
+                                                boolean wasRestored) {
+                if (!wasRestored) {
+                    youTubePlayer = player;
+
+                    //set the player style default
+                    youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
+                    youTubePlayer.cueVideo(SubCategoryAvatar);
+                }
+            }
+
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider arg0, YouTubeInitializationResult arg1) {
+
+                //print or show error if initialization failed
+                Log.e(TAG, "Youtube Player View initialization failed");
+            }
+        });
     }
 
     class CategoryDetailAsyncTask extends AsyncTask<String,Void,Boolean>{

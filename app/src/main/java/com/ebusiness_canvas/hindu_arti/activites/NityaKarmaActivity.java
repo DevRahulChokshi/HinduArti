@@ -7,7 +7,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +14,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ebusiness_canvas.hindu_arti.R;
@@ -42,7 +42,7 @@ public class NityaKarmaActivity extends AppCompatActivity {
     private ContainerAdapter containerAdapter;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private ConstraintLayout constraintLayout;
+    private LinearLayout linearLayout;
     private Toolbar mContainerToolBar;
 
     @Override
@@ -54,7 +54,7 @@ public class NityaKarmaActivity extends AppCompatActivity {
 
         recyclerView=findViewById(R.id.recyclerItemList);
         mContainerToolBar=findViewById(R.id.container_toolbar);
-        constraintLayout=findViewById(R.id.container_constrain);
+        linearLayout =findViewById(R.id.container_constrain);
         layoutManager=new LinearLayoutManager(NityaKarmaActivity.this);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -73,14 +73,13 @@ public class NityaKarmaActivity extends AppCompatActivity {
                 asyncTask.execute();
         }else {
             Snackbar snackbar = Snackbar
-                    .make(constraintLayout,"Please check internet connection!", Snackbar.LENGTH_LONG);
+                    .make(linearLayout,"Please check internet connection!", Snackbar.LENGTH_LONG);
             View sbView = snackbar.getView();
             TextView textView =sbView.findViewById(android.support.design.R.id.snackbar_text);
             textView.setTextColor(Color.WHITE);
             snackbar.show();
         }
     }
-
 
     private boolean checkNetworkState() {
         ConnectivityManager connectivityManager
@@ -165,7 +164,7 @@ public class NityaKarmaActivity extends AppCompatActivity {
         setSupportActionBar(mContainerToolBar);
         ActionBar actionBar=getSupportActionBar ();
         if (actionBar!=null){
-            actionBar.setTitle (R.string.App_name);
+            actionBar.setTitle ("नित्य कर्म");
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeButtonEnabled(true);
         }
